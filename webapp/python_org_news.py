@@ -6,11 +6,11 @@ def get_html(url):
         result = requests.get(url)
         result.raise_for_status()
         return result.text
-    except(requests,RequestException, ValueError):
+    except(requests.RequestException, ValueError):
         print("Сетевая ошибка")
         return False
 
-def get_python_news(html):
+def get_python_news():
     html = get_html("https://www.python.org/blogs/")
     if html:
         soup = BeautifulSoup(html, 'html.parser')
